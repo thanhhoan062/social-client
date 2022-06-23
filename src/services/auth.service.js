@@ -1,10 +1,9 @@
 import axios from 'axios';
 import TokenService from './token.service';
-
-const API_URL = 'http://localhost:5000/api/auth/';
+import { API_AUTH_URL } from '../constants';
 
 const register = (name, username, email, password) => {
-  return axios.post(API_URL + 'signup', {
+  return axios.post(API_AUTH_URL + 'signup', {
     name,
     username,
     email,
@@ -14,7 +13,7 @@ const register = (name, username, email, password) => {
 
 const login = (username, password) => {
   return axios
-    .post(API_URL + 'signin-refresh', {
+    .post(API_AUTH_URL + 'signin-refresh', {
       username,
       password,
     })

@@ -1,6 +1,9 @@
 export const API_BASE_URL = 'http://localhost:5000';
 export const ACCESS_TOKEN = 'accessToken';
 
+export const API_AUTH_URL = 'http://localhost:5000/api/auth/';
+export const API_TEST_URL = 'http://localhost:5000/api/test/';
+
 export const OAUTH2_REDIRECT_URI = 'http://localhost:3000/oauth2/redirect';
 
 export const GOOGLE_AUTH_URL =

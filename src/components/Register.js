@@ -227,7 +227,7 @@ const Register = () => {
         <div className="or-separator">
           <span className="or-text">OR</span>
         </div>
-        <SignupForm {...this.props} />
+        <SignupForm />
         <span className="login-link">
           Already have an account? <Link to="/login">Login!</Link>
         </span>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import './Header.css';
+import './common.css';
 import AuthService from '../../services/auth.service';
+import logo from '../../images/logo.svg';
+import { FaBars } from 'react-icons/fa';
 
 const Header = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -22,44 +24,75 @@ const Header = () => {
   };
 
   return (
-    <header className="app-header">
-      <div className="container">
-        <div className="app-branding">
-          <Link to="/" className="app-title">
-            Spring Social
+    // <header className="app-header">
+    //   <div className="container">
+    //     <div className="app-branding">
+    //       <Link to="/" className="app-title">
+    //         Spring Social
+    //       </Link>
+    //     </div>
+    //     <div className="app-options">
+    //       <nav className="app-nav">
+    //         {currentUser ? (
+    //           <ul>
+    //             <li>
+    //               <NavLink to={'/home'}>Home</NavLink>
+    //             </li>
+    //             <li>
+    //               <NavLink to="/profile">{currentUser.username}</NavLink>
+    //             </li>
+    //             <li>
+    //               <a onClick={logOut}>Logout</a>
+    //             </li>
+    //           </ul>
+    //         ) : (
+    //           <ul>
+    //             <li>
+    //               <NavLink to={'/home'}>Home</NavLink>
+    //             </li>
+    //             <li>
+    //               <NavLink to="/login">Login</NavLink>
+    //             </li>
+    //             <li>
+    //               <NavLink to="/register">Sign Up</NavLink>
+    //             </li>
+    //           </ul>
+    //         )}
+    //       </nav>
+    //     </div>
+    //   </div>
+    // </header>
+
+    <nav className="nav">
+      <div className="nav-center">
+        <div className="nav-header">
+          <img src={logo} className="nav-logo" alt="" />
+          <button className="nav-btn toggle-btn">
+            <FaBars />
+          </button>
+        </div>
+
+        <ul className="nav-links">
+          <li>
+            <button className="nav-link-btn">products</button>
+          </li>
+          <li>
+            <button className="nav-link-btn">developers</button>
+          </li>
+          <li>
+            <button className="nav-link-btn">company</button>
+          </li>
+        </ul>
+        <div>
+          <Link to="/login">
+            <button className="signin-btn">Log In</button>
+          </Link>
+          <Link to="/register">
+            <button className="signin-btn signup-btn">Sign Up</button>
           </Link>
         </div>
-        <div className="app-options">
-          <nav className="app-nav">
-            {currentUser ? (
-              <ul>
-                <li>
-                  <NavLink to={'/home'}>Home</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/profile">{currentUser.username}</NavLink>
-                </li>
-                <li>
-                  <a onClick={logOut}>Logout</a>
-                </li>
-              </ul>
-            ) : (
-              <ul>
-                <li>
-                  <NavLink to={'/home'}>Home</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/login">Login</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/register">Sign Up</NavLink>
-                </li>
-              </ul>
-            )}
-          </nav>
-        </div>
       </div>
-    </header>
+    </nav>
   );
 };
 export default Header;

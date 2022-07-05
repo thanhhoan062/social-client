@@ -1,6 +1,7 @@
 import React, { useReducer, useContext } from 'react'
 import axios from 'axios'
 import { ACTION_TYPES } from '../common/constants';
+import reducer from './reducer'
 
 const token = localStorage.getItem('token')
 const user = localStorage.getItem('user')

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -32,7 +32,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <BrowserRouter>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -45,7 +45,7 @@ const App = () => {
         <Route path="/admin" element={<BoardAdmin />} />
       </Routes>
 
-    </>
+    </BrowserRouter>
   );
 };
 export default App;

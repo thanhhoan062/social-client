@@ -12,6 +12,8 @@ import BoardModerator from './BoardComponents/BoardModerator';
 import BoardAdmin from './BoardComponents/BoardAdmin';
 import AuthService from './services/auth.service';
 import Header from './components/common/Header';
+import ProtectedRoute from './pages/ProtectedRoute';
+import SharedLayout from './pages/dashboard/SharedLayout';
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -35,7 +37,18 @@ const App = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
+
+        <Route
+          path="/"
+          element={
+            // <ProtectedRoute>
+            //   <SharedLayout />
+            // </ProtectedRoute>
+            <SharedLayout />
+          }
+        />
+
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -44,7 +57,6 @@ const App = () => {
         <Route path="/mod" element={<BoardModerator />} />
         <Route path="/admin" element={<BoardAdmin />} />
       </Routes>
-
     </BrowserRouter>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import UserService from '../services/user.service';
 import { FaBars } from 'react-icons/fa';
 import phoneImg from '../images/phone.svg';
-import '../App.css';
+import '../index.css';
 
 const Home = () => {
   const [content, setContent] = useState('');

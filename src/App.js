@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import './App.css';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
@@ -13,6 +11,7 @@ import BoardAdmin from './BoardComponents/BoardAdmin';
 import AuthService from './services/auth.service';
 import Header from './components/common/Header';
 import ProtectedRoute from './pages/ProtectedRoute';
+import Landing from './pages/Landing';
 import SharedLayout from './pages/dashboard/SharedLayout';
 
 const App = () => {
@@ -41,14 +40,16 @@ const App = () => {
         <Route
           path="/"
           element={
-            // <ProtectedRoute>
-            //   <SharedLayout />
-            // </ProtectedRoute>
-            <SharedLayout />
+            <ProtectedRoute>
+              <SharedLayout />
+            </ProtectedRoute>
+            // <SharedLayout />
           }
         />
 
         <Route path="/home" element={<Home />} />
+        <Route path="/landing" element={<Landing />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />

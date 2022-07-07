@@ -4,7 +4,7 @@ import Input from 'react-validation/build/input';
 import { Link, useNavigate } from 'react-router-dom';
 import CheckButton from 'react-validation/build/button';
 import AuthService from '../services/auth.service';
-import './component.css';
+
 import {
   GOOGLE_AUTH_URL,
   FACEBOOK_AUTH_URL,

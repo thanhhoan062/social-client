@@ -73,7 +73,7 @@ const AppProvider = ({ children }) => {
   );
 
   const displayAlert = () => {
-    dispatch({ type: ACTION_TYPES.ACTION_TYPES.DISPLAY_ALERT });
+    dispatch({ type: ACTION_TYPES.DISPLAY_ALERT });
     clearAlert();
   };
 

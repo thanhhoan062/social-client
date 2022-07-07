@@ -2,17 +2,18 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Login from './components/Login';
-import Register from './components/Register';
+// import Register from './components/Register';
 import Profile from './components/Profile';
 import Home from './BoardComponents/Home';
 import BoardUser from './BoardComponents/BoardUser';
 import BoardModerator from './BoardComponents/BoardModerator';
 import BoardAdmin from './BoardComponents/BoardAdmin';
 import AuthService from './services/auth.service';
-import Header from './components/common/Header';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Landing from './pages/Landing';
 import SharedLayout from './pages/dashboard/SharedLayout';
+import Register from './pages/Register';
+
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);

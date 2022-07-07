@@ -1,14 +1,18 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useAppContext } from '../context/appContext';
 import { useNavigate } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/RegisterPage';
 import Logo from '../components/Logo';
+import FormRow from '../components/FormRow';
+
 
 const initialState = {
+  fullName: '',
   name: '',
   email: '',
   password: '',
-  isMember: true,
+  isLogin: true,
+  role: ['user'],
 };
 
 const Register = () => {
@@ -18,7 +22,15 @@ const Register = () => {
     useAppContext();
 
   const toggleMember = () => {
-    setValues({ ...values, isMember: !values.isMember });
+    setValues(
+      {
+        fullName: '',
+        username: '',
+        email: '',
+        password: '',
+        role: ['user'],
+        isLogin: !values.isLogin
+      });
   };
 
   const handleChange = (e) => {
@@ -27,19 +39,22 @@ const Register = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const { fullName, name, email, password, isMember } = values;
-    if (!fullName || !email || !password || (!isMember && !name)) {
+    const { fullName, username, email, password, isLogin, role } = values;
+
+    if (!username || !password || (!isLogin && !fullName) || (!isLogin && !email)) {
       displayAlert();
       return;
     }
-    const currentUser = { fullName, name, email, password };
-    if (isMember) {
+
+    if (isLogin) {
+      const currentUser = { username, password };
       setupUser({
         currentUser,
         endPoint: 'login',
         alertText: 'Login Successful! Redirecting...',
       });
     } else {
+      const currentUser = { fullName, username, email, password, role };
       setupUser({
         currentUser,
         endPoint: 'register',
@@ -60,42 +75,49 @@ const Register = () => {
     <Wrapper>
       <form className="form" onSubmit={onSubmit}>
         <Logo />
-        <h3>{value.isMember ? 'Login' : 'Register'}</h3>
-        {showAlert && <Alert />}
+        <h3>{values.isLogin ? 'Login' : 'Register'}</h3>
+        {/* {showAlert && <Alert />} */}
 
-        <FormRow
-          type="text"
-          name="full name"
-          value={values.fullName}
-          handleChange={handleChange}
-        />
-        {!value.isMember && (
+        {!values.isLogin &&
           <FormRow
             type="text"
-            name="user name"
-            value={values.name}
+            name="fullName"
+            label="Full Name"
+            value={values.fullName}
+            handleChange={handleChange}
+          />
+        }
+
+        {!values.isLogin && (
+          <FormRow
+            type="email"
+            name="email"
+            label="Email"
+            value={values.email}
             handleChange={handleChange}
           />
         )}
         <FormRow
-          type="email"
-          name="email"
-          value={values.email}
+          type="text"
+          name="username"
+          label="User Name"
+          value={values.username}
           handleChange={handleChange}
         />
         <FormRow
           type="password"
           name="password"
+          label="Password"
           value={values.password}
           handleChange={handleChange}
         />
         <button type="submit" className="btn btn-block" disabled={isLoading}>
-          {value.isMember ? 'Login' : 'Register'}
+          {values.isLogin ? 'Login' : 'Register'}
         </button>
         <p>
-          {values.isMember ? 'Not a member yet?' : 'Already a member?'}
+          {values.isLogin ? 'Not a member yet?' : 'Already a member?'}
           <button type="button" onClick={toggleMember} className="member-btn">
-            {values.isMember ? 'Register' : 'Login'}
+            {values.isLogin ? 'Register' : 'Login'}
           </button>
         </p>
       </form>

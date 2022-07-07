@@ -38,7 +38,7 @@ const App = () => {
         {/* <Route path="/" element={<Home />} /> */}
 
         <Route
-          path="/"
+          path="/check"
           element={
             <ProtectedRoute>
               <SharedLayout />
@@ -46,6 +46,7 @@ const App = () => {
             // <SharedLayout />
           }
         />
+        <Route path="/" element={<SharedLayout />} />
 
         <Route path="/home" element={<Home />} />
         <Route path="/landing" element={<Landing />} />

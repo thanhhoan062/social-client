@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/RegisterPage';
 import Logo from '../components/Logo';
 import FormRow from '../components/FormRow';
-
+import Alert from '../components/Alert';
 
 const initialState = {
   fullName: '',
@@ -22,15 +22,14 @@ const Register = () => {
     useAppContext();
 
   const toggleMember = () => {
-    setValues(
-      {
-        fullName: '',
-        username: '',
-        email: '',
-        password: '',
-        role: ['user'],
-        isLogin: !values.isLogin
-      });
+    setValues({
+      fullName: '',
+      username: '',
+      email: '',
+      password: '',
+      role: ['user'],
+      isLogin: !values.isLogin,
+    });
   };
 
   const handleChange = (e) => {
@@ -41,7 +40,12 @@ const Register = () => {
     e.preventDefault();
     const { fullName, username, email, password, isLogin, role } = values;
 
-    if (!username || !password || (!isLogin && !fullName) || (!isLogin && !email)) {
+    if (
+      !username ||
+      !password ||
+      (!isLogin && !fullName) ||
+      (!isLogin && !email)
+    ) {
       displayAlert();
       return;
     }
@@ -76,9 +80,9 @@ const Register = () => {
       <form className="form" onSubmit={onSubmit}>
         <Logo />
         <h3>{values.isLogin ? 'Login' : 'Register'}</h3>
-        {/* {showAlert && <Alert />} */}
+        {showAlert && <Alert />}
 
-        {!values.isLogin &&
+        {!values.isLogin && (
           <FormRow
             type="text"
             name="fullName"
@@ -86,7 +90,7 @@ const Register = () => {
             value={values.fullName}
             handleChange={handleChange}
           />
-        }
+        )}
 
         {!values.isLogin && (
           <FormRow

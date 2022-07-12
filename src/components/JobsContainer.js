@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useAppContext } from '../context/appContext';
 import Loading from './Loading';
-import Job from './Job';
-import Wrapper from '../assets/wrappers/JobsContainer';
-import PageBtnContainer from './PageBtnContainer';
+// import Job from './Job';
+// import Wrapper from '../assets/wrappers/JobsContainer';
+// import PageBtnContainer from './PageBtnContainer';
 
 const JobsContainer = () => {
   const {

@@ -1,6 +1,6 @@
 import Alert from './Alert';
 import BigSidebar from './BigSidebar';
-import ChartsContainer from './ChartsContainer';
+// import ChartsContainer from './ChartsContainer';
 import FormRow from './FormRow';
 import FormRowSelect from './FormRowSelect';
 import JobsContainer from './JobsContainer';
@@ -21,6 +21,6 @@ export {
   SearchContainer,
   JobsContainer,
   StatsContainer,
-  ChartsContainer,
+  // ChartsContainer,
   Loading,
 };

@@ -1,14 +1,15 @@
 import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import * as serviceWorker from './serviceWorker';
+import ReactDOM from 'react-dom/client';
+import { AppProvider } from './context/appContext';
+import './index.css';
 
 import App from './App';
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root')
+root.render(
+  <React.StrictMode>
+    <AppProvider>
+      <App />
+    </AppProvider>
+  </React.StrictMode>
 );
-serviceWorker.unregister();

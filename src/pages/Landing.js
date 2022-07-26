@@ -22,7 +22,7 @@ const Landing = () => {
             quinoa lo-fi tote bag adaptogen everyday carry meggings +1 brunch
             narwhal.
           </p>
-          <Link to="/register" className="btn btn-hero">
+          <Link to="/register" className="btn-app btn-hero">
             Login/Register
           </Link>
         </div>

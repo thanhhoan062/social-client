@@ -165,6 +165,19 @@ ul {
   text-transform: capitalize;
   display: inline-block;
 }
+.btn-app {
+  cursor: pointer;
+  color: var(--white);
+  background: var(--primary-500);
+  border: transparent;
+  border-radius: var(--borderRadius);
+  letter-spacing: var(--letterSpacing);
+  padding: 0.375rem 0.75rem;
+  box-shadow: var(--shadow-2);
+  transition: var(--transition);
+  text-transform: capitalize;
+  display: inline-block;
+}
 
 .btn:hover {
   background: var(--primary-700);
@@ -426,7 +439,6 @@ Home
     transform: scale(1);
   }
 }
-
 
 .hero::before {
   content: '';

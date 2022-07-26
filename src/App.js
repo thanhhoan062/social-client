@@ -7,10 +7,6 @@ import BoardUser from './BoardComponents/BoardUser';
 import BoardModerator from './BoardComponents/BoardModerator';
 import BoardAdmin from './BoardComponents/BoardAdmin';
 
-import ProtectedRoute from './pages/ProtectedRoute';
-import Landing from './pages/Landing';
-import Register from './pages/Register';
-
 import { Register, Landing, Error, ProtectedRoute } from './pages';
 import {
   AllJobs,

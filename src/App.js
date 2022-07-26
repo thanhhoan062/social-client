@@ -16,7 +16,7 @@ import {
   AddJob,
 } from './pages/dashboard';
 
-// import Login from './components/Login';
+import Login from './components/Login';
 // import Profile from './components/Profile';
 
 import AuthService from './services/auth.service';

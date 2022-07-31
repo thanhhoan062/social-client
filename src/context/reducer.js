@@ -27,6 +27,7 @@ const reducer = (state, action) => {
                 user: action.payload.user,
                 userLocation: action.payload.location,
                 jobLocation: action.payload.location,
+                roles: action.payload.roles,
                 showAlert: true,
                 alertType: 'success',
                 alertText: action.payload.alertText,
@@ -46,7 +47,7 @@ const reducer = (state, action) => {
             }
         case ACTION_TYPES.LOGOUT_USER:
             return {
-                ...initialState,
+                ...state,
                 user: null,
                 token: null,
                 jobLocation: '',

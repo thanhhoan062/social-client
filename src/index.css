@@ -152,7 +152,7 @@ ul {
 
 /* buttons */
 
-.btn {
+.btn-common {
   cursor: pointer;
   color: var(--white);
   background: var(--primary-500);

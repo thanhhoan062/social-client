@@ -2,26 +2,21 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
-import Home from './BoardComponents/Home';
-import BoardUser from './BoardComponents/BoardUser';
-import BoardModerator from './BoardComponents/BoardModerator';
-import BoardAdmin from './BoardComponents/BoardAdmin';
+import { Home, BoardUser, BoardModerator, BoardAdmin } from './BoardComponents';
 
-import ProtectedRoute from './pages/ProtectedRoute';
-import Landing from './pages/Landing';
-import Register from './pages/Register';
-
-import { Register, Landing, Error, ProtectedRoute } from './pages';
 import {
-  AllJobs,
-  Profile,
-  SharedLayout,
+  RegisterPage,
+  HomePage,
+  ProtectedRoute,
   Stats,
+  AllJobs,
   AddJob,
-} from './pages/dashboard';
+  SharedLayout,
+  ProfilePage,
+  Profile,
+  Login
+} from './components';
 
-import Login from './components/Login';
-import Profile from './components/Profile';
 
 import AuthService from './services/auth.service';
 
@@ -47,7 +42,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/check"
+          path="/"
           element={
             <ProtectedRoute>
               <SharedLayout />
@@ -55,20 +50,20 @@ const App = () => {
             // <SharedLayout />
           }
         />
-        <Route path="/" element={<SharedLayout />}>
+        <Route path="/check" element={<SharedLayout />}>
           {/* <Route index element={<Stats />} /> */}
           <Route path="stats" element={<Stats />} />
           <Route path="all-jobs" element={<AllJobs />} />
           <Route path="add-job" element={<AddJob />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="profile" element={<ProfilePage />} />
         </Route>
 
-        <Route path="/landing" element={<Landing />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/register" element={<RegisterPage />} />
 
-        <Route path="/home" element={<Home />} />
+        {/* <Route path="/home" element={<Home />} /> */}
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile-detail" element={<Profile />} />
         <Route path="/user" element={<BoardUser />} />
         <Route path="/mod" element={<BoardModerator />} />
         <Route path="/admin" element={<BoardAdmin />} />

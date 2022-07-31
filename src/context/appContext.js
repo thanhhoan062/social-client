@@ -2,6 +2,7 @@ import React, { useReducer, useContext } from 'react';
 import axios from 'axios';
 import { ACTION_TYPES } from '../common/constants';
 import reducer from './reducer';
+import { API_AUTH_URL } from '../constants';
 
 const token = localStorage.getItem('token');
 const user = localStorage.getItem('user');
@@ -12,7 +13,7 @@ const initialState = {
   showAlert: false,
   alertText: '',
   alertType: '',
-  user: user ? JSON.parse(user) : null,
+  user: (user != 'undefined' && user) ? JSON.parse(user) : null,
   token: token,
   userLocation: userLocation || '',
   showSidebar: false,
@@ -83,29 +84,31 @@ const AppProvider = ({ children }) => {
     }, 3000);
   };
 
-  const addUserToLocalStorage = ({ user, token, location }) => {
+  const addUserToLocalStorage = ({ user, token, location, roles }) => {
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
     localStorage.setItem('location', location);
+    localStorage.setItem('roles', roles);
   };
 
   const removeUserFromLocalStorage = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('location');
+    localStorage.removeItem('roles');
   };
 
   const setupUser = async ({ currentUser, endPoint, alertText }) => {
     dispatch({ type: ACTION_TYPES.SETUP_USER_BEGIN });
     try {
-      const { data } = await axios.post(`/api/auth/${endPoint}`, currentUser);
+      const { data } = await axios.post(API_AUTH_URL + `${endPoint}`, currentUser);
 
-      const { user, token, location } = data;
+      const { user, token, location, roles } = data;
       dispatch({
         type: ACTION_TYPES.SETUP_USER_SUCCESS,
-        payload: { user, token, location, alertText },
+        payload: { user, token, location, roles, alertText },
       });
-      addUserToLocalStorage({ user, token, location });
+      addUserToLocalStorage({ user, token, location, roles });
     } catch (error) {
       dispatch({
         type: ACTION_TYPES.SETUP_USER_ERROR,
@@ -114,6 +117,7 @@ const AppProvider = ({ children }) => {
     }
     clearAlert();
   };
+
   const toggleSidebar = () => {
     dispatch({ type: ACTION_TYPES.TOGGLE_SIDEBAR });
   };
